@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#123b32"><title>رضوان ٹریڈرز</title>
+<style>
+:root{--g:#123b32;--g2:#1d5b4c;--bg:#f3f6f4;--line:#e0e8e3;--muted:#68766f;--red:#b42318}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#17221e;font-family:system-ui,-apple-system,"Noto Naskh Arabic",Arial,sans-serif}
+header{background:linear-gradient(130deg,var(--g),var(--g2));color:white;padding:22px 16px 18px;border-radius:0 0 22px 22px}header h1{font-size:25px;margin:0}header p{margin:4px 0 0;color:#d6e8df;font-size:13px}
+main{max-width:900px;margin:auto;padding:12px 12px 70px}.tabs{display:flex;gap:7px;overflow:auto;padding:10px 0 14px;position:sticky;top:0;background:var(--bg);z-index:5}.tabs button{border:1px solid var(--line);background:white;color:var(--g);padding:10px 13px;border-radius:12px;white-space:nowrap;font-weight:700}.tabs button.active{background:var(--g);color:white}
+.panel{display:none}.panel.active{display:block}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card,.box{background:white;border:1px solid var(--line);border-radius:15px;padding:13px;box-shadow:0 2px 8px #163b3210}
+.stat small{color:var(--muted);display:block;font-size:12px}.stat strong{font-size:21px;display:block;margin-top:5px}
+h2{font-size:19px;margin:5px 0 12px}h3{font-size:16px;margin:0 0 8px}
+label{font-size:13px;color:var(--muted);display:block;margin:9px 0 5px}input,select,textarea{width:100%;padding:11px;border:1px solid #d6e1da;border-radius:10px;background:white;font:inherit;font-size:15px;color:#17221e}textarea{min-height:70px;resize:vertical}
+button.primary{background:var(--g);color:white;border:0;padding:12px 15px;border-radius:11px;font:inherit;font-weight:700;width:100%;margin-top:12px}button.secondary{background:#e8f1ec;color:var(--g);border:0;padding:10px 12px;border-radius:10px;font:inherit;font-weight:700}button.danger{background:#fff0ef;color:var(--red);border:0;padding:8px 10px;border-radius:9px;font:inherit}
+.row{display:flex;gap:8px}.row>*{flex:1;min-width:0}.forms{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}.full{grid-column:1/-1}
+.list{display:flex;flex-direction:column;gap:8px;margin-top:12px}.item{background:white;border:1px solid var(--line);border-radius:12px;padding:11px;display:flex;justify-content:space-between;gap:9px;align-items:center}.item b{display:block}.item small{color:var(--muted);display:block;line-height:1.7}.money{font-weight:800;white-space:nowrap}.muted{color:var(--muted);font-size:12px}.notice{background:#fff8e8;border:1px solid #f1dfb5;color:#785314;padding:10px;border-radius:12px;font-size:13px;line-height:1.7;margin:10px 0}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.actions>*{flex:1}.empty{text-align:center;color:var(--muted);padding:18px}.tag{font-size:11px;background:#e8f1ec;color:var(--g);padding:3px 7px;border-radius:20px}
+@media(min-width:650px){.cards{grid-template-columns:repeat(4,1fr)}}
+</style></head>
+<body>
+<header><h1>رضوان ٹریڈرز</h1><p>بزنس مینجمنٹ سسٹم — مکمل آف لائن</p></header>
+<main>
+<nav class="tabs" id="tabs">
+<button class="active" data-tab="home">ڈیش بورڈ</button><button data-tab="stock">اسٹاک</button><button data-tab="entry">خرید / فروخت</button><button data-tab="customers">گاہک</button><button data-tab="ledger">کھاتہ</button><button data-tab="reports">رپورٹس</button><button data-tab="backup">بیک اَپ</button>
+</nav>
+<section class="panel active" id="home">
+<h2>کاروبار کا خلاصہ</h2><div class="cards">
+<div class="card stat"><small>اسٹاک آئٹمز</small><strong id="hItems">0</strong></div><div class="card stat"><small>اسٹاک کی مالیت</small><strong id="hStock">0</strong></div><div class="card stat"><small>آج کی فروخت</small><strong id="hSales">0</strong></div><div class="card stat"><small>کل ادھار باقی</small><strong id="hDue">0</strong></div>
+</div><div class="box" style="margin-top:12px"><h3>فوری کام</h3><div class="actions"><button class="secondary" onclick="go('entry')">نئی خرید / فروخت</button><button class="secondary" onclick="go('customers')">نیا گاہک</button><button class="secondary" onclick="go('stock')">نیا اسٹاک</button></div></div>
+<div class="notice">یہ ایپ انٹرنیٹ کے بغیر چلتی ہے۔ ڈیٹا اسی موبائل کے اسی براؤزر میں محفوظ ہوتا ہے۔ موبائل/براؤزر کا ڈیٹا صاف کرنے سے پہلے بیک اَپ ضرور ڈاؤن لوڈ کریں۔</div>
+</section>
+<section class="panel" id="stock"><h2>اسٹاک مینجمنٹ</h2><div class="box"><h3>نئی چیز شامل کریں</h3><div class="forms">
+<div><label>چیز کا نام</label><input id="pName" placeholder="مثلاً Pampers Large یا انڈے"></div>
+<div><label>قسم</label><select id="pType"><option>پیمپرز</option><option>انڈے</option><option>دیگر</option></select></div>
+<div><label>یونٹ</label><select id="pUnit"><option>پیک</option><option>پیٹی</option><option>ٹرے</option><option>درجن</option><option>عدد</option><option>کارٹن</option></select></div>
+<div><label>ابتدائی مقدار</label><input id="pQty" type="number" min="0" step="0.01" value="0"></div>
+<div><label>خرید قیمت فی یونٹ</label><input id="pCost" type="number" min="0" step="0.01" value="0"></div>
+<div><label>فروخت قیمت فی یونٹ</label><input id="pPrice" type="number" min="0" step="0.01" value="0"></div>
+</div><button class="primary" onclick="addProduct()">اسٹاک محفوظ کریں</button></div><div id="stockList" class="list"></div></section>
+<section class="panel" id="entry"><h2>خرید / فروخت درج کریں</h2><div class="box"><div class="forms">
+<div><label>لین دین کی قسم</label><select id="tKind"><option value="sale">فروخت</option><option value="purchase">خریداری</option><option value="payment">ادھار وصولی</option></select></div>
+<div><label>تاریخ</label><input id="tDate" type="date"></div>
+<div><label>چیز</label><select id="tProduct"></select></div>
+<div><label>گاہک / سپلائر</label><select id="tCustomer"></select></div>
+<div><label>مقدار</label><input id="tQty" type="number" min="0.01" step="0.01" value="1"></div>
+<div><label>فی یونٹ قیمت</label><input id="tPrice" type="number" min="0" step="0.01" value="0"></div>
+<div><label>جمع نقد رقم</label><input id="tPaid" type="number" min="0" step="0.01" value="0"></div>
+<div class="full"><label>تفصیل</label><input id="tNote" placeholder="اختیاری نوٹ"></div>
+</div><button class="primary" onclick="addTransaction()">لین دین محفوظ کریں</button><p class="muted">فروخت میں اسٹاک کم، خریداری میں اسٹاک زیادہ ہوگا۔ بقایا رقم گاہک کے کھاتے میں شامل ہوگی۔</p></div><div id="transList" class="list"></div></section>
+<section class="panel" id="customers"><h2>گاہک اور سپلائر</h2><div class="box"><h3>نیا گاہک شامل کریں</h3><div class="forms">
+<div><label>نام</label><input id="cName" placeholder="گاہک کا نام"></div><div><label>WhatsApp نمبر</label><input id="cPhone" type="tel" inputmode="tel" placeholder="03xxxxxxxxx"></div>
+<div class="full"><label>مکمل پتہ</label><textarea id="cAddress" placeholder="گھر، گلی، محلہ، شہر"></textarea></div>
+<div class="full"><label>ابتدائی بقایا (اگر ہو)</label><input id="cOpening" type="number" min="0" step="0.01" value="0"></div>
+</div><button class="primary" onclick="addCustomer()">گاہک محفوظ کریں</button></div><div id="customerList" class="list"></div></section>
+<section class="panel" id="ledger"><h2>گاہکوں کا کھاتہ</h2><div class="box"><label>گاہک منتخب کریں</label><select id="ledgerCustomer" onchange="renderLedger()"></select><div id="ledgerDetail" class="list"><div class="empty">کھاتہ دیکھنے کے لیے گاہک منتخب کریں۔</div></div></div></section>
+<section class="panel" id="reports"><h2>رپورٹس</h2><div class="cards">
+<div class="card stat"><small>کل خریداری</small><strong id="rPurchase">0</strong></div><div class="card stat"><small>کل فروخت</small><strong id="rSales">0</strong></div><div class="card stat"><small>نقد وصولی</small><strong id="rCash">0</strong></div><div class="card stat"><small>کل بقایا</small><strong id="rDue">0</strong></div></div><div class="box" style="margin-top:12px"><h3>لین دین کی فہرست</h3><div id="reportList" class="list"></div></div></section>
+<section class="panel" id="backup"><h2>ڈیٹا بیک اَپ</h2><div class="box"><p>اپنے تمام اسٹاک، گاہک اور لین دین کی فائل محفوظ کریں۔ موبائل تبدیل کرنے پر یہی فائل واپس لوڈ کریں۔</p><div class="actions"><button class="secondary" onclick="exportData()">بیک اَپ ڈاؤن لوڈ</button><label class="secondary" style="text-align:center;cursor:pointer">بیک اَپ بحال کریں<input type="file" accept="application/json" onchange="importData(event)" style="display:none"></label></div><div class="notice">اہم: بیک اَپ فائل کسی محفوظ جگہ رکھیں۔ بحال کرنے سے موجودہ ڈیٹا تبدیل ہو جائے گا۔</div></div></section>
+</main>
+<script>
+const KEY='rizwan_traders_offline_v1';
+let db={products:[],customers:[],transactions:[]};
+try{const saved=localStorage.getItem(KEY);if(saved)db=JSON.parse(saved)}catch(e){}
+const $=id=>document.getElementById(id), num=v=>Number(v)||0, fmt=v=>num(v).toLocaleString('en-PK',{maximumFractionDigits:2});
+function save(){localStorage.setItem(KEY,JSON.stringify(db));renderAll()}
+function go(id){document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('active',x.dataset.tab===id));}
+$('tabs').addEventListener('click',e=>{let b=e.target.closest('button[data-tab]');if(b)go(b.dataset.tab)});
+function addProduct(){let name=$('pName').value.trim();if(!name)return alert('چیز کا نام لکھیں');db.products.push({id:Date.now(),name,type:$('pType').value,unit:$('pUnit').value,qty:num($('pQty').value),cost:num($('pCost').value),price:num($('pPrice').value)});$('pName').value='';save();alert('اسٹاک محفوظ ہوگیا')}
+function addCustomer(){let name=$('cName').value.trim();if(!name)return alert('گاہک کا نام لکھیں');db.customers.push({id:Date.now(),name,phone:$('cPhone').value.trim(),address:$('cAddress').value.trim(),opening:num($('cOpening').value)});['cName','cPhone','cAddress'].forEach(id=>$(id).value='');$('cOpening').value=0;save();alert('گاہک محفوظ ہوگیا')}
+function balance(c){return num(c.opening)+db.transactions.filter(t=>t.customerId===c.id).reduce((s,t)=>s+num(t.due),0)}
+function addTransaction(){let kind=$('tKind').value,prod=db.products.find(p=>p.id===Number($('tProduct').value)),cust=db.customers.find(c=>c.id===Number($('tCustomer').value));if(kind!=='payment'&&!prod)return alert('پہلے اسٹاک میں چیز شامل کریں');if(!cust)return alert('پہلے گاہک/سپلائر شامل کریں');let qty=num($('tQty').value),price=num($('tPrice').value),paid=num($('tPaid').value);if(kind!=='payment'&&qty<=0)return alert('درست مقدار لکھیں');let total=kind==='payment'?paid:qty*price;if(kind==='payment'&&total<=0)return alert('وصولی کی رقم لکھیں');let due=kind==='sale'?Math.max(0,total-paid):kind==='purchase'?Math.max(0,total-paid):-total;
+if(kind==='sale'&&prod.qty<qty)return alert('اسٹاک میں اتنی مقدار موجود نہیں');if(kind==='sale')prod.qty-=qty;if(kind==='purchase')prod.qty+=qty;
+db.transactions.unshift({id:Date.now(),kind,productId:prod?.id||null,productName:prod?.name||'ادھار وصولی',customerId:cust.id,customerName:cust.name,qty,price,total,paid,due,date:$('tDate').value||new Date().toISOString().slice(0,10),note:$('tNote').value.trim()});$('tNote').value='';save();alert('لین دین محفوظ ہوگیا')}
+function delProduct(id){if(confirm('یہ اسٹاک آئٹم حذف کریں؟')){db.products=db.products.filter(p=>p.id!==id);save()}}
+function delCustomer(id){if(db.transactions.some(t=>t.customerId===id))return alert('اس گاہک کا لین دین موجود ہے، حذف نہیں کر سکتے');if(confirm('گاہک حذف کریں؟')){db.customers=db.customers.filter(c=>c.id!==id);save()}}
+function renderAll(){
+$('hItems').textContent=db.products.length;$('hStock').textContent=fmt(db.products.reduce((s,p)=>s+p.qty*p.cost,0));let today=new Date().toISOString().slice(0,10);$('hSales').textContent=fmt(db.transactions.filter(t=>t.kind==='sale'&&t.date===today).reduce((s,t)=>s+t.total,0));$('hDue').textContent=fmt(db.customers.reduce((s,c)=>s+Math.max(0,balance(c)),0));
+$('stockList').innerHTML=db.products.length?db.products.map(p=>`<div class="item"><div><b>${esc(p.name)} <span class="tag">${esc(p.type)}</span></b><small>مقدار: ${fmt(p.qty)} ${esc(p.unit)} · خرید: ${fmt(p.cost)} · فروخت: ${fmt(p.price)}</small></div><div><span class="money">${fmt(p.qty*p.cost)}</span><br><button class="danger" onclick="delProduct(${p.id})">حذف</button></div></div>`).join(''):'<div class="empty">ابھی کوئی اسٹاک شامل نہیں۔</div>';
+$('customerList').innerHTML=db.customers.length?db.customers.map(c=>`<div class="item"><div><b>${esc(c.name)}</b><small>WhatsApp: ${esc(c.phone||'درج نہیں')}<br>پتہ: ${esc(c.address||'درج نہیں')}<br>بقایا: ${fmt(balance(c))}</small>${c.phone?`<a href="https://wa.me/${wa(c.phone)}" target="_blank" rel="noopener">WhatsApp کھولیں</a>`:''}</div><button class="danger" onclick="delCustomer(${c.id})">حذف</button></div>`).join(''):'<div class="empty">ابھی کوئی گاہک شامل نہیں۔</div>';
+$('tProduct').innerHTML=db.products.map(p=>`<option value="${p.id}">${esc(p.name)} — ${fmt(p.qty)} ${esc(p.unit)}</option>`).join('');$('tCustomer').innerHTML=db.customers.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('');$('ledgerCustomer').innerHTML='<option value="">گاہک منتخب کریں</option>'+db.customers.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('');
+let ts=db.transactions;$('transList').innerHTML=ts.slice(0,30).map(t=>transHtml(t)).join('')||'<div class="empty">ابھی کوئی لین دین نہیں۔</div>';
+let sum=k=>ts.filter(t=>t.kind===k).reduce((s,t)=>s+t.total,0);$('rPurchase').textContent=fmt(sum('purchase'));$('rSales').textContent=fmt(sum('sale'));$('rCash').textContent=fmt(ts.reduce((s,t)=>s+t.paid,0));$('rDue').textContent=fmt(db.customers.reduce((s,c)=>s+Math.max(0,balance(c)),0));$('reportList').innerHTML=ts.map(t=>transHtml(t)).join('')||'<div class="empty">کوئی ریکارڈ نہیں۔</div>';
+renderLedger();
+}
+function transHtml(t){let label=t.kind==='sale'?'فروخت':t.kind==='purchase'?'خریداری':'ادھار وصولی';return `<div class="item"><div><b>${label}: ${esc(t.productName)} — ${esc(t.customerName)}</b><small>${esc(t.date)} · مقدار ${fmt(t.qty)} · کل ${fmt(t.total)} · جمع ${fmt(t.paid)} · بقایا ${fmt(t.due)} ${t.note?'· '+esc(t.note):''}</small></div><span class="money">${fmt(t.total)}</span></div>`}
+function renderLedger(){let id=Number($('ledgerCustomer').value),c=db.customers.find(x=>x.id===id);if(!c){$('ledgerDetail').innerHTML='<div class="empty">کھاتہ دیکھنے کے لیے گاہک منتخب کریں۔</div>';return}let rows=db.transactions.filter(t=>t.customerId===id);$('ledgerDetail').innerHTML=`<div class="card"><b>${esc(c.name)}</b><div class="muted">WhatsApp: ${esc(c.phone||'درج نہیں')}<br>پتہ: ${esc(c.address||'درج نہیں')}</div><h3 style="margin-top:8px">موجودہ بقایا: ${fmt(balance(c))} روپے</h3></div>`+(rows.map(t=>transHtml(t)).join('')||'<div class="empty">کوئی لین دین نہیں۔</div>')}
+function exportData(){let blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Rizwan-Traders-Backup.json';a.click();URL.revokeObjectURL(a.href)}
+function importData(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let x=JSON.parse(r.result);if(!x.products||!x.customers||!x.transactions)throw 0;if(confirm('موجودہ ڈیٹا کی جگہ بیک اَپ بحال کریں؟')){db=x;save();alert('بیک اَپ بحال ہوگیا')}}catch(_){alert('یہ درست بیک اَپ فائل نہیں ہے')}};r.readAsText(f);e.target.value=''}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function wa(s){let n=String(s).replace(/\D/g,'');if(n.startsWith('0'))n='92'+n.slice(1);return n}
+$('tDate').value=new Date().toISOString().slice(0,10);
+$('tKind').addEventListener('change',()=>{let payment=$('tKind').value==='payment';$('tProduct').disabled=payment;$('tQty').disabled=payment;if(!payment){let p=db.products.find(x=>x.id===Number($('tProduct').value));$('tPrice').value=p?($('tKind').value==='sale'?p.price:p.cost):0}else $('tPrice').value=0});
+$('tProduct').addEventListener('change',()=>{let p=db.products.find(x=>x.id===Number($('tProduct').value));if(p)$('tPrice').value=$('tKind').value==='sale'?p.price:p.cost});
+renderAll();
+</script></body></html>
